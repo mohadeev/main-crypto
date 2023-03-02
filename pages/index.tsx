@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [price, setPrice] = useState(0);
-  const [days, setDays] = useState(1);
-  const [priceForDays, setPriceForDays] = useState(1);
+  const [days, setDays] = useState(0);
+  const [priceForDays, setPriceForDays] = useState(0);
 
   useEffect(() => {
     axios.get("/api/hello").then((res: any) => {
