@@ -38,7 +38,7 @@ export default function Home() {
           ganar {price * 30} $
         </p>
         <div className={Style.input_container}>
-          <p>entrar cunatos dias quieres abajo</p>
+          <p>entrar cuantos dias quieres abajo</p>
           <input
             type="number"
             min="0"
