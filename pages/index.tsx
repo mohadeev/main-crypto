@@ -9,13 +9,22 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [price, setPrice] = useState(0);
+  const [days, setDays] = useState(30);
+
   useEffect(() => {
     axios.get("/api/hello").then((res: any) => {
       console.log(res.data.data);
       setPrice(res.data.data);
     });
   }, []);
-
+  const handelChange = (e: any) => {
+    const valueDays = e.target.value;
+    if (typeof valueDays === "number") {
+      setDays(valueDays);
+    } else {
+      alert("STRING");
+    }
+  };
   return (
     <>
       <Head>
@@ -31,9 +40,19 @@ export default function Home() {
           {price * 30} $
         </h4>
         <div className={Style.input_container}>
-          <input className={Style.input} />{" "}
+          <input
+            type="number"
+            min="0"
+            onChange={handelChange}
+            className={Style.input}
+          />{" "}
           <button className={Style.button}>ver</button>
+          <br />
         </div>
+        <h4>
+          cuanto vas a ganar el mes si el precio es {price} , vas a ganar{" "}
+          {price * 30} $
+        </h4>
       </main>
     </>
   );
