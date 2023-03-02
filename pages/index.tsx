@@ -32,7 +32,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={Style.main}>
-        <h3>el precio de Helium Token ahroa es {price} $</h3> <br />
+        <h3>el precio de Helium Token ahora es {price} $</h3> <br />
         <p>
           cuanto vas a ganar al Mes si el precio de Helium es {price} $ , vas a
           ganar {price * 30} $
