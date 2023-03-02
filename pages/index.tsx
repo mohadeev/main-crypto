@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [price, setPrice] = useState(0);
-  const [days, setDays] = useState(30);
+  const [days, setDays] = useState(1);
+  const [priceForDays, setPriceForDays] = useState(1);
 
   useEffect(() => {
     axios.get("/api/hello").then((res: any) => {
@@ -19,11 +20,8 @@ export default function Home() {
   }, []);
   const handelChange = (e: any) => {
     const valueDays = e.target.value;
-    if (typeof valueDays === "number") {
-      setDays(valueDays);
-    } else {
-      alert("STRING");
-    }
+    setDays(valueDays);
+    setPriceForDays(price * valueDays);
   };
   return (
     <>
@@ -35,24 +33,24 @@ export default function Home() {
       </Head>
       <main className={Style.main}>
         <h3>el precio de Helium Token ahroa es {price} $</h3> <br />
-        <h4>
-          cuanto vas a ganar el mes si el precio es {price} , vas a ganar{" "}
-          {price * 30} $
-        </h4>
+        <p>
+          cuanto vas a ganar al Mes si el precio de Helium es {price} $ , vas a
+          ganar {price * 30} $
+        </p>
         <div className={Style.input_container}>
+          <p>entrar cunatos dias quieres abajo</p>
           <input
             type="number"
             min="0"
             onChange={handelChange}
             className={Style.input}
           />{" "}
-          <button className={Style.button}>ver</button>
           <br />
         </div>
-        <h4>
-          cuanto vas a ganar el mes si el precio es {price} , vas a ganar{" "}
-          {price * 30} $
-        </h4>
+        <p>
+          Dias : {days} <br />
+          Vas ganar : {priceForDays} $
+        </p>
       </main>
     </>
   );
